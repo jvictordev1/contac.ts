@@ -76,7 +76,6 @@ class ContactManager {
   }
 
   atualizarLista() {
-    list.innerHTML = "";
     const emptyListText = document.getElementById("empty-list-text");
     if (this.updatedListLength !== this.contactList.length) {
       const list = document.getElementById("list");
