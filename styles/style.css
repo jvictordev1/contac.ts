@@ -1,0 +1,164 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Inter", sans-serif;
+}
+:root {
+  --white: #ffffff;
+  --zinc900: #18181b;
+  --zinc800: #27272a;
+  --zinc500: #71717a;
+  --zinc400: #d4d4d8;
+  --font-md: 14px;
+  --font-lg: 18px;
+  --font-4xl: 40px;
+  --light-blue: #5f9be3;
+  --font-bold: 800;
+  --font-regular: 500;
+  --font-light: 300;
+  --font-semibold: 600;
+}
+body {
+  background-color: #09090b;
+  font-weight: var(--font-regular);
+  color: var(--white);
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+main {
+  width: 1000px;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+}
+.nav-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 600px;
+  height: max-content;
+  gap: 12px;
+}
+.nav-header-text h1 {
+  font-size: var(--font-4xl);
+}
+.nav-header-text p {
+  font-size: var(--font-lg);
+  font-weight: var(--font-light);
+  margin-bottom: 8px;
+}
+.nav-header-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contacts-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  height: 100%;
+  width: 100%;
+}
+.contacts-list-header h1 {
+  font-size: var(--font-4xl);
+}
+.contacts-list-header {
+  display: flex;
+  justify-content: space-between;
+}
+.contacts-list-header button {
+  background-color: transparent;
+  color: var(--light-blue);
+  border: none;
+  font-size: var(--font-lg);
+  cursor: pointer;
+}
+.contacts-list h4 {
+  font-size: var(--font-lg);
+  font-weight: var(--font-light);
+  color: var(--zinc500);
+}
+.list-container {
+  display: flex;
+  height: 70%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.delete-icon {
+  font-size: 40px;
+  color: #ef4444;
+}
+.delete-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+.list {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: 14px;
+}
+.list-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  list-style-type: none;
+  background-color: var(--zinc800);
+  padding: 20px;
+  border-radius: 12px;
+  height: 80%;
+  width: 150px;
+}
+.user-icon {
+  font-size: 70px;
+}
+.add-friend-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+.add-friend-form input {
+  padding: 12px;
+  font-size: var(--font-lg);
+  color: white;
+  border-radius: 12px;
+  border: none;
+  background-color: var(--zinc900);
+}
+.add-friend-form input::placeholder {
+  font-weight: var(--font-light);
+}
+.add-friend-form button {
+  padding: 12px;
+  cursor: pointer;
+  font-weight: var(--font-regular);
+  font-size: var(--font-lg);
+  border-radius: 12px;
+  border: none;
+  background-color: var(--light-blue);
+}
+.politics-footer {
+  font-size: var(--font-md);
+  font-weight: var(--font-light);
+  text-align: center;
+  color: var(--zinc500);
+  width: 50%;
+  height: max-content;
+}
+.underlined-text {
+  text-decoration: underline;
+  color: var(--zinc400);
+}
+.hidden {
+  display: none;
+}
