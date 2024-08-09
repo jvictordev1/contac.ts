@@ -18,13 +18,15 @@ class ContactManager {
       localStorage.getItem("contacts").length > 0
     ) {
       this.contactList = JSON.parse(localStorage.getItem("contacts"));
-
+      this.updatedListLength = this.contactList.length;
       window.onload = () => {
         this.contactList.forEach((contact) => {
           const li = document.createElement("li");
           li.classList.add("list-item");
           li.innerHTML = `
-        <span class="material-symbols-outlined user-icon">
+          <div class="contact-list-div">
+            <div class="contact-card-header">
+              <span class="material-symbols-outlined user-icon">
                 account_circle
               </span>
 
@@ -33,7 +35,7 @@ class ContactManager {
 
                 <p class="phone">${contact.phone}</p>
               </div>
-
+            </div>
               <button class="delete-button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -53,6 +55,7 @@ class ContactManager {
                   <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                 </svg>
               </button>
+          </div>
         `;
           const list = document.getElementById("list");
           list.appendChild(li);
@@ -98,7 +101,9 @@ class ContactManager {
         const li = document.createElement("li");
         li.classList.add("list-item");
         li.innerHTML = `
-        <span class="material-symbols-outlined user-icon">
+        <div class="contact-list-div">
+            <div class="contact-card-header">
+              <span class="material-symbols-outlined user-icon">
                 account_circle
               </span>
 
@@ -107,8 +112,13 @@ class ContactManager {
 
                 <p class="phone">${contact.phone}</p>
               </div>
+<<<<<<< HEAD
 
               <button class="delete-button" id="delete-button">
+=======
+            </div>
+              <button class="delete-button">
+>>>>>>> ed3877375948aee7ec346b03ba6eda85f0b57937
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -127,6 +137,7 @@ class ContactManager {
                   <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                 </svg>
               </button>
+          </div>
         `;
         list.appendChild(li);
       });
