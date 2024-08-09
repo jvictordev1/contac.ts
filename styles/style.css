@@ -68,6 +68,7 @@ main {
   gap: 14px;
   width: 100%;
   height: 100%;
+  overflow: hidden;
 }
 .add-friend-form {
   display: flex;
@@ -121,7 +122,8 @@ main {
   display: flex;
   align-items: start;
   flex-direction: column;
-  height: 200px;
+  overflow: scroll;
+  max-height: 100pc;
   gap: 14px;
 }
 /* Card do telefone */
@@ -202,12 +204,40 @@ main {
   text-decoration: underline;
   color: var(--zinc400);
 }
-.list-container {
-  height: 100%;
-}
 
 .hidden {
   display: none;
+}
+@media screen and (max-width: 700px) {
+  main {
+    padding: 0;
+    width: 80%;
+  }
+  .nav-header-text h1 {
+    font-size: 32px;
+  }
+  .nav-header-text p {
+    font-size: 14px;
+  }
+  .contacts-list-header h1 {
+    font-size: var(--font-lg);
+  }
+  .nav-header {
+    width: 100%;
+  }
+  .politics-footer {
+    width: 300px;
+    font-size: 12px;
+  }
+  .add-friend-form input {
+    font-size: var(--font-md);
+  }
+  .add-friend-form button {
+    font-size: var(--font-md);
+  }
+  .contacts-list-header button {
+    font-size: var(--font-md);
+  }
 }
 
 /*
