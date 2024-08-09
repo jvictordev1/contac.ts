@@ -240,6 +240,10 @@ main {
   }
 }
 
+#delete-list {
+  color: rgb(156, 17, 17);
+}
+
 /*
 .list-container {
   display: flex;
