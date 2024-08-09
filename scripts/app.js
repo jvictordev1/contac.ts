@@ -112,13 +112,8 @@ class ContactManager {
 
                 <p class="phone">${contact.phone}</p>
               </div>
-<<<<<<< HEAD
-
-              <button class="delete-button" id="delete-button">
-=======
-            </div>
+          </div>
               <button class="delete-button">
->>>>>>> ed3877375948aee7ec346b03ba6eda85f0b57937
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
