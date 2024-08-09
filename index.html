@@ -35,18 +35,20 @@
             required
           />
           <input
-            type="text"
-            placeholder="Qual o número do seu amigo?"
+            type="tel"
             id="friend-phone"
+            name="friend-phone"
+            placeholder="(xx) xxxx-xxxx"
             required
           />
+          <small>Formato: (xx) xxxx-xxxx</small>
           <button>Adicionar</button>
         </form>
       </header>
       <section class="contacts-list">
         <div class="contacts-list-header">
           <h1>Lista de contatos</h1>
-          <div style="display: flex; gap: 10px; justify-content: center">
+          <div class="contact-list-actions-wrapper">
             <button id="update-list">Atualizar lista</button>
             <button id="delete-list">Apagar</button>
           </div>
@@ -63,5 +65,6 @@
       </footer>
     </main>
     <script src="./scripts/app.js" type="module"></script>
+    <script src="./scripts/phone-input.js"></script>
   </body>
 </html>
