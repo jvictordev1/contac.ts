@@ -22,11 +22,12 @@ class ContactManager {
   }
   adicionarContato(contato) {
     this.contactList.push(contato);
-    this.atualizaLocalStorage();
+    this.atualizarLista();
   }
   atualizaLocalStorage() {
     if (this.contactList.length) {
       localStorage.setItem("contacts", JSON.stringify(this.contactList));
+
       return;
     }
     localStorage.clear();
@@ -62,7 +63,8 @@ class ContactManager {
         this.updatedListLength,
         this.contactList.length
       );
-      console.log(newContacts);
+      this.atualizaLocalStorage();
+
       emptyListText.classList.contains("hidden")
         ? null
         : emptyListText.classList.add("hidden");
@@ -117,13 +119,9 @@ class ContactManager {
 const friendNameInput = document.getElementById("friend-name");
 const friendPhoneInput = document.getElementById("friend-phone");
 const addFriendForm = document.getElementById("add-friend-form");
-const updateListButton = document.getElementById("update-list");
+
 const deleteListButton = document.getElementById("delete-list");
 const contactManager = new ContactManager();
-
-updateListButton.addEventListener("click", () => {
-  contactManager.atualizarLista();
-});
 
 addFriendForm.addEventListener("submit", (e) => {
   e.preventDefault();
