@@ -12,78 +12,46 @@ class ContactManager {
   constructor() {
     this.contactList = [];
     this.updatedListLength = 0;
-
     if (
       localStorage.getItem("contacts") &&
       localStorage.getItem("contacts").length > 0
     ) {
       this.contactList = JSON.parse(localStorage.getItem("contacts"));
-      this.updatedListLength = this.contactList.length;
-      window.onload = () => {
-        this.contactList.forEach((contact) => {
-          const li = document.createElement("li");
-          li.classList.add("list-item");
-          li.innerHTML = `
-          <div class="contact-list-div">
-            <div class="contact-card-header">
-              <span class="material-symbols-outlined user-icon">
-                account_circle
-              </span>
-
-              <div class="desc-col">
-                <p class="name">${contact.name}</p>
-
-                <p class="phone">${contact.phone}</p>
-              </div>
-            </div>
-              <button class="delete-button">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  class="delete-icon"
-                  style="color: red; font-size: 40px"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M3 6h18" />
-                  <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
-                  <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
-                </svg>
-              </button>
-          </div>
-        `;
-          const list = document.getElementById("list");
-          list.appendChild(li);
-        });
-      };
-
-      const emptyListText = document.getElementById("empty-list-text");
-      emptyListText.classList.add("hidden");
+      window.onload = this.atualizarLista();
     }
   }
-
   adicionarContato(contato) {
     this.contactList.push(contato);
-    localStorage.setItem("contacts", JSON.stringify(this.contactList));
+    this.atualizaLocalStorage();
   }
-
+  atualizaLocalStorage() {
+    if (this.contactList.length) {
+      localStorage.setItem("contacts", JSON.stringify(this.contactList));
+      return;
+    }
+    localStorage.clear();
+  }
   removerContato(contato) {
+    const listItem = document.getElementById(contato.id);
+    const emptyListText = document.getElementById("empty-list-text");
     this.contactList = this.contactList.filter(
       (contact) => contact.id !== contato.id
     );
-
-    this.atualizarLista();
+    this.updatedListLength = this.contactList.length;
+    listItem.remove();
+    this.contactList.length ? null : emptyListText.classList.remove("hidden");
+    this.atualizaLocalStorage();
   }
 
   deletarLista() {
-    const contactList = document.getElementById("list");
-    contactList.innerHTML = "";
-    this.contactList = [];
+    if (this.contactList.length) {
+      const contactList = document.getElementById("list");
+      const emptyListText = document.getElementById("empty-list-text");
+      emptyListText.classList.toggle("hidden");
+      this.contactList = [];
+      contactList.innerHTML = "";
+      this.atualizaLocalStorage();
+    }
   }
 
   atualizarLista() {
@@ -94,26 +62,26 @@ class ContactManager {
         this.updatedListLength,
         this.contactList.length
       );
+      console.log(newContacts);
       emptyListText.classList.contains("hidden")
         ? null
         : emptyListText.classList.add("hidden");
       newContacts.forEach((contact) => {
         const li = document.createElement("li");
         li.classList.add("list-item");
+        li.setAttribute("id", contact.id);
         li.innerHTML = `
         <div class="contact-list-div">
             <div class="contact-card-header">
               <span class="material-symbols-outlined user-icon">
                 account_circle
               </span>
-
               <div class="desc-col">
                 <p class="name">${contact.name}</p>
-
                 <p class="phone">${contact.phone}</p>
               </div>
           </div>
-              <button class="delete-button">
+          <button class="delete-button" id="delete-button">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="24"
@@ -132,8 +100,11 @@ class ContactManager {
                   <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
                 </svg>
               </button>
-          </div>
         `;
+        const deleteButton = li.querySelector("button");
+        deleteButton.addEventListener("click", () =>
+          this.removerContato(contact)
+        );
         list.appendChild(li);
       });
       this.updatedListLength = this.contactList.length;
